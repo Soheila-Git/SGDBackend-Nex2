@@ -829,13 +829,17 @@ def index_downloads():
 
 
 def index_part_1():
-    index_phenotypes()
     index_downloads()
     index_not_mapped_genes()
-    index_genes()
     index_strains()
-    index_colleagues()
-    index_chemicals()
+    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+        index_phenotypes()
+    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+        index_genes()
+    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+        index_colleagues()
+    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+        index_chemicals()
 
 
 def index_part_2():
@@ -843,7 +847,8 @@ def index_part_2():
     index_toolbar_links()
     index_observables()
     index_go_terms()
-    index_references()
+    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+        index_references()
 
 
 if __name__ == "__main__":
