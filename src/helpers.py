@@ -271,10 +271,12 @@ def upload_file(username, file, **kwargs):
     status = kwargs.get('status', 'Active')
     description = kwargs.get('description', None)
     readme_file_id = kwargs.get('readme_file_id', None)
-    # get file size
-    file.seek(0, os.SEEK_END)
-    file_size = file.tell()
-    file.seek(0)
+    # TEMP
+    # # get file size
+    # file.seek(0, os.SEEK_END)
+    # file_size = file.tell()
+    # file.seek(0)
+    file_size = None
 
     try:
         md5sum = hashlib.md5(file.read()).hexdigest()
@@ -308,7 +310,7 @@ def upload_file(username, file, **kwargs):
         DBSession.flush()
         fdb = DBSession.query(Filedbentity).filter(
             Filedbentity.dbentity_id == did).one_or_none()
-        fdb.upload_file_to_s3(file, filename)
+        # fdb.upload_file_to_s3(file, filename)
     except Exception as e:
         DBSession.rollback()
         DBSession.remove()

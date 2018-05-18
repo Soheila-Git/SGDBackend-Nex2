@@ -37,7 +37,7 @@ def create_and_upload_file(obj, row_num, sftp_client):
         remote_file_path = DATA_DIR + '/' + obj['bun_path']
         # special transformations
         remote_file_path = remote_file_path.replace('feature/', 'features/')
-        remote_file = sftp_client.open(remote_file_path)
+        # remote_file = sftp_client.open(remote_file_path)
     except IOError:
         logging.error('error opening file ' + str(row_num))
         traceback.print_exc()
@@ -66,7 +66,8 @@ def create_and_upload_file(obj, row_num, sftp_client):
             except TypeError:
                 logging.error('invalid EDAM id or source in row ' + str(row_num) + ' val in ' + obj['data_edam_id'] + ', ' + obj['format_edam_id'] + ', ' + obj['topic_edam_id'])
                 return
-            upload_file(CREATED_BY, remote_file,
+            # TEMP
+            upload_file(CREATED_BY, None,
                 filename=obj['display_name'],
                 file_extension=obj['file_extension'],
                 description=obj['description'],
@@ -91,22 +92,24 @@ def create_and_upload_file(obj, row_num, sftp_client):
             existing.is_in_spell = obj['is_in_spell']
             existing.is_in_browser = obj['is_in_browser']
             existing.source_id = source_id
-            # update file size
-            if not existing.file_size and existing.s3_url:
-                remote_file.seek(0, os.SEEK_END)
-                file_size = remote_file.tell()
-                remote_file.seek(0)
-                existing.file_size = file_size
+            # TEMP
+            # # update file size
+            # if not existing.file_size and existing.s3_url:
+            #     remote_file.seek(0, os.SEEK_END)
+            #     file_size = remote_file.tell()
+            #     remote_file.seek(0)
+            #     existing.file_size = file_size
             if obj['file_date']:
                 existing.file_date = obj['file_date']
                 existing.year = obj['file_date'].year
             existing.readme_file_id = readme_file_id
-            remote_file.seek(0, os.SEEK_END)
+            # remote_file.seek(0, os.SEEK_END)
             transaction.commit()
             existing = db_session.query(Filedbentity).filter(Filedbentity.display_name == obj['display_name']).one_or_none()
             # only upload s3 file if not defined
-            if existing.s3_url is None:
-                existing.upload_file_to_s3(remote_file, obj['display_name'])
+            # TEMP
+            # if existing.s3_url is None:
+            #     existing.upload_file_to_s3(remote_file, obj['display_name'])
             db_session.flush()
         # add path entries
         existing = db_session.query(Filedbentity).filter(Filedbentity.display_name == obj['display_name']).one_or_none()
