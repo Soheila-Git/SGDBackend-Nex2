@@ -1,0 +1,227 @@
+dataset.format_name,datasetsample.display_name (sample_title),datasetsample.description,datasetsample.dbxref_id,datasetsample.dbxref_type,biosample name,datasetsample.biosample_id (obi_id),datasetsample.strain_name,datasetsample.sample_order
+transcription_start_sites.GFF3,transcription_start_sites,Mapping of transcript start sites at single-nucleotide resolution,,,total RNA extract,OBI:0000895,S288C,1
+polyadenylation_sites.GFF3,poly_A_sites,Mapping of polyadenylation sites at single-nucleotide resolution,,,total RNA extract,OBI:0000895,S288C,2
+CUTs.GFF3,cryptic_unstable_transcripts,Role of histone modifications and early termination in pervasive transcription and antisense-mediated gene silencing in yeast; Cryptic Unstable Transcripts (CUTs) mapping,,,total RNA extract,OBI:0000895,W303,1
+SUTs.GFF3,stable_unannotated_transcripts,Role of histone modifications and early termination in pervasive transcription and antisense-mediated gene silencing in yeast; Stable Unannotated Transcripts (SUTs) mapping,,,total RNA extract,OBI:0000895,W303,2
+ORF-Ts.GFF3,open_reading_frame_transcripts,Role of histone modifications and early termination in pervasive transcription and antisense-mediated gene silencing in yeast; ORF transcripts,,,total RNA extract,OBI:0000895,W303,3
+other.GFF3,other_transcripts,"Role of histone modifications and early termination in pervasive transcription and antisense-mediated gene silencing in yeast. Other transcripts (non-ORF, non-CUTs, non-SUTs)",,,total RNA extract,OBI:0000895,W303,4
+Geisberg_2014_mRNA-decay_V64.gff3,mRNA_half_life,"Half-lives of 21,248 mRNA 3_ isoforms in yeast were measured by rapidly depleting RNA polymerase II from the nucleus and performing direct RNA sequencing throughout the decay process",,,total RNA extract,OBI:0000895,S288C,2
+Hu_2014_nucleosome_old_avg_V64.bw,old_cells_nucleosomes,Nucleosome loss leads to global transcriptional up-regulation and genomic instability during yeast aging,,,DNA extract,OBI:0001051,S288C,3
+Hu_2014_nucleosome_over_avg_V64.bw,old_cells_histone_overexpression_nucleosomes,Nucleosome loss leads to global transcriptional up-regulation and genomic instability during yeast aging,,,DNA extract,OBI:0001051,S288C,4
+Hu_2014_nucleosome_young_avg_V64.bw,young_cells_nucleosomes,Nucleosome loss leads to global transcriptional up-regulation and genomic instability during yeast aging,,,DNA extract,OBI:0001051,S288C,5
+Hu_2014_genome_old_avg_V64.bw,old_cells_genome,Nucleosome loss leads to global transcriptional up-regulation and genomic instability during yeast aging,,,DNA extract,OBI:0001051,S288C,6
+Hu_2014_genome_young_avg_V64.bw,young_cells_genome,Nucleosome loss leads to global transcriptional up-regulation and genomic instability during yeast aging,,,DNA extract,OBI:0001051,S288C,7
+Smith_2014_24931603_supplement02_V64.gff,transcripts,Translation of small open reading frames (> 200 nucleotides) within unannotated RNA transcripts in Saccharomyces cerevisiae; unannotated RNAs,,,total RNA extract,OBI:0000895,S288C,1
+Smith_2014_24931603_supplement03_V64.gff,unmapped_transcripts,Translation of small open reading frames (10-100 amino acids in length) within unannotated RNA transcripts in Saccharomyces cerevisiae; short ORFs (sORFs),,,total RNA extract,OBI:0000895,S288C,2
+Kang_2015_novel-transcript_V64.gff3,novel_transcripts,Newly identified novel transcripts by polyA sequence,,,polyA RNA extract,OBI:0000869,S288C,1
+Kang_2015_uORF_V64.gff3,upstream_ORF,Upstream ORFs identified by UTR and gene boundaries,,,polyA RNA extract,OBI:0000869,S288C,2
+Kang_2015_unannotated-transcript_V64.gff3,antisense_internal_CUTs_SUTs_XUTs,Unannotated transcripts identified by polyA sequence,,,polyA RNA extract,OBI:0000869,S288C,3
+Schaughency_2014_NrdMinusComp_norm_FullReadMinusStrand_V64.bw,nrdMinusComp_norm_FullReadMinusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on minus strand in Nrd1p-FRB strain, no rapamycin",,,total RNA extract,OBI:0000895,W303,1
+Schaughency_2014_NrdMinusComp_norm_FullReadPlusStrand_V64.bw,nrdMinusComp_norm_FullReadPlusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on plus strand in Nrd1p-FRB strain, no rapamycin",,,total RNA extract,OBI:0000895,W303,2
+Schaughency_2014_NrdPlusComp_norm_FullReadMinusStrand_V64.bw,NrdPlusComp_norm_FullReadMinusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on minus strand in Nrd1p-FRB strain, with rapamycin",,,total RNA extract,OBI:0000895,W303,3
+Schaughency_2014_NrdPlusComp_norm_FullReadPlusStrand_V64.bw,NrdPlusComp_norm_FullReadPlusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on plus strand in Nrd1p-FRB strain, with rapamycin",,,total RNA extract,OBI:0000895,W303,4
+Schaughency_2014_RpbPlusComp_norm_FullReadMinusStrand_V64.bw,RpbPlusComp_norm_FullReadMinusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on minus strand in Rdp2p-FRB strain, with rapamycin",,,total RNA extract,OBI:0000895,W303,5
+Schaughency_2014_RpbPlusComp_norm_FullReadPlusStrand_V64.bw,RpbPlusComp_norm_FullReadPlusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on plus strand in Rdp2p-FRB strain, with rapamycin",,,total RNA extract,OBI:0000895,W303,6
+Schaughency_2014_SenPlusComp_norm_FullReadMinusStrand_V64.bw,SenPlusComp_norm_FullReadMinusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on minus strand in Sen1p-FRB strain, with rapamycin",,,total RNA extract,OBI:0000895,W303,7
+Schaughency_2014_SenPlusComp_norm_FullReadPlusStrand_V64.bw,SenPlusComp_norm_FullReadPlusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on plus strand in Sen1p-FRB strain, with rapamycin",,,total RNA extract,OBI:0000895,W303,8
+Schaughency_2014_YshPlusComp_norm_FullReadMinusStrand_V64.bw,YshPlusComp_norm_FullReadMinusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on minus strand in Ysh1p-FRB strain, with rapamycin",,,total RNA extract,OBI:0000895,W303,9
+Schaughency_2014_YshPlusComp_norm_FullReadPlusStrand_V64.bw,YshPlusComp_norm_FullReadPlusStrand,"Genome-wide mapping of yeast RNA polymerase II termination on plus strand in Ysh1p-FRB strain, with rapamycin",,,total RNA extract,OBI:0000895,W303,10
+El_Hage_2014_Batch1_ChIP-seq_PGAL_TOP1rnh1drnh201d_normalized_V64.bw,ChIP-seq_PGAL_TOP1rnh1drnh201d,Genome-wide distribution of RNA-DNA hybrids identifies RNase H targets in tRNA genes retrotransposons and mitochondria.,,,DNA extract,OBI:0001051,S288C,1
+El_Hage_2014_Batch1_ChIP-seq_rnh1drnh201d_normalized_V64.bw,ChIP-seq_rnh1drnh201d,Genome-wide distribution of RNA-DNA hybrids identifies RNase H targets in tRNA genes retrotransposons and mitochondria.,,,DNA extract,OBI:0001051,S288C,2
+El_Hage_2014_avg_ChIP-seq_WT_norm_V64.bw,avg_ChIP-seq_WT,Genome-wide distribution of RNA-DNA hybrids identifies RNase H targets in tRNA genes retrotransposons and mitochondria.,,,DNA extract,OBI:0001051,S288C,3
+El_Hage_2014_avg_input_chromatin_WT_norm_V64.bw,avg_input_chromatin_WT,Genome-wide distribution of RNA-DNA hybrids identifies RNase H targets in tRNA genes retrotransposons and mitochondria.,,,DNA extract,OBI:0001051,S288C,4
+Weiner_2015_h2ak5ac_tp1_0_V64.bw,h2ak5ac_0_min,High resolution chromosome dynamics time course of h2ak5ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,1
+Weiner_2015_h2ak5ac_tp2_4_V64.bw,h2ak5ac_4_min,High resolution chromosome dynamics time course of h2ak5ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,2
+Weiner_2015_h2ak5ac_tp3_8_V64.bw,h2ak5ac_8_min,High resolution chromosome dynamics time course of h2ak5ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,3
+Weiner_2015_h2ak5ac_tp4_15_V64.bw,h2ak5ac_15_min,High resolution chromosome dynamics time course of h2ak5ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,4
+Weiner_2015_h2ak5ac_tp5_30_V64.bw,h2ak5ac_30_min,High resolution chromosome dynamics time course of h2ak5ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,5
+Weiner_2015_h2ak5ac_tp6_60_V64.bw,h2ak5ac_60_min,High resolution chromosome dynamics time course of h2ak5ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,6
+Weiner_2015_h2as129ph_tp1_0_V64.bw,h2as129ph_0_min,High resolution chromosome dynamics time course of h2as129ph; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,7
+Weiner_2015_h2as129ph_tp2_4_V64.bw,h2as129ph_4_min,High resolution chromosome dynamics time course of h2as129ph; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,8
+Weiner_2015_h2as129ph_tp3_8_V64.bw,h2as129ph_8_min,High resolution chromosome dynamics time course of h2as129ph; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,9
+Weiner_2015_h2as129ph_tp4_15_V64.bw,h2as129ph_15_min,High resolution chromosome dynamics time course of h2as129ph; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,10
+Weiner_2015_h2as129ph_tp5_30_V64.bw,h2as129ph_30_min,High resolution chromosome dynamics time course of h2as129ph; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,11
+Weiner_2015_h2as129ph_tp6_60_V64.bw,h2as129ph_60_min,High resolution chromosome dynamics time course of h2as129ph; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,12
+Weiner_2015_h3k4ac_tp1_0_V64.bw,h3k4ac_0_min,High resolution chromosome dynamics time course of h3k4ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,13
+Weiner_2015_h3k4ac_tp2_4_V64.bw,h3k4ac_4_min,High resolution chromosome dynamics time course of h3k4ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,14
+Weiner_2015_h3k4ac_tp3_8_V64.bw,h3k4ac_8_min,High resolution chromosome dynamics time course of h3k4ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,15
+Weiner_2015_h3k4ac_tp4_15_V64.bw,h3k4ac_15_min,High resolution chromosome dynamics time course of h3k4ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,16
+Weiner_2015_h3k4ac_tp5_30_V64.bw,h3k4ac_30_min,High resolution chromosome dynamics time course of h3k4ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,17
+Weiner_2015_h3k4ac_tp6_60_V64.bw,h3k4ac_60_min,High resolution chromosome dynamics time course of h3k4ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,18
+Weiner_2015_h3k4me_tp1_0_V64.bw,h3k4me_0_min,High resolution chromosome dynamics time course of h3k4me; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,19
+Weiner_2015_h3k4me_tp2_4_V64.bw,h3k4me_4_min,High resolution chromosome dynamics time course of h3k4me; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,20
+Weiner_2015_h3k4me_tp3_8_V64.bw,h3k4me_8_min,High resolution chromosome dynamics time course of h3k4me; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,21
+Weiner_2015_h3k4me_tp4_15_V64.bw,h3k4me_15_min,High resolution chromosome dynamics time course of h3k4me; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,22
+Weiner_2015_h3k4me_tp5_30_V64.bw,h3k4me_30_min,High resolution chromosome dynamics time course of h3k4me; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,23
+Weiner_2015_h3k4me_tp6_60_V64.bw,h3k4me_60_min,High resolution chromosome dynamics time course of h3k4me; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,24
+Weiner_2015_h3k4me2_tp1_0_V64.bw,h3k4me2_0_min,High resolution chromosome dynamics time course of h3k4me2 ; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,25
+Weiner_2015_h3k4me2_tp2_4_V64.bw,h3k4me2_4_min,High resolution chromosome dynamics time course of h3k4me2 ; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,26
+Weiner_2015_h3k4me2_tp3_8_V64.bw,h3k4me2_8_min,High resolution chromosome dynamics time course of h3k4me2 ; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,27
+Weiner_2015_h3k4me2_tp4_15_V64.bw,h3k4me2_15_min,High resolution chromosome dynamics time course of h3k4me2 ; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,28
+Weiner_2015_h3k4me2_tp5_30_V64.bw,h3k4me2_30_min,High resolution chromosome dynamics time course of h3k4me2 ; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,29
+Weiner_2015_h3k4me2_tp6_60_V64.bw,h3k4me2_60_min,High resolution chromosome dynamics time course of h3k4me2 ; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,30
+Weiner_2015_h3k4me3_tp1_0_V64.bw,h3k4me3_0_min,High resolution chromosome dynamics time course of h3k4me3; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,31
+Weiner_2015_h3k4me3_tp2_4_V64.bw,h3k4me3_4_min,High resolution chromosome dynamics time course of h3k4me3; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,32
+Weiner_2015_h3k4me3_tp3_8_V64.bw,h3k4me3_8_min,High resolution chromosome dynamics time course of h3k4me3; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,33
+Weiner_2015_h3k4me3_tp4_15_V64.bw,h3k4me3_15_min,High resolution chromosome dynamics time course of h3k4me3; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,34
+Weiner_2015_h3k4me3_tp5_30_V64.bw,h3k4me3_30_min,High resolution chromosome dynamics time course of h3k4me3; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,35
+Weiner_2015_h3k4me3_tp6_60_V64.bw,h3k4me3_60_min,High resolution chromosome dynamics time course of h3k4me3; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,36
+Weiner_2015_h3k9ac_tp1_0_V64.bw,h3k9ac_0_min,High resolution chromosome dynamics time course of h3k9ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,37
+Weiner_2015_h3k9ac_tp2_4_V64.bw,h3k9ac_4_min,High resolution chromosome dynamics time course of h3k9ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,38
+Weiner_2015_h3k9ac_tp3_8_V64.bw,h3k9ac_8_min,High resolution chromosome dynamics time course of h3k9ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,39
+Weiner_2015_h3k9ac_tp4_15_V64.bw,h3k9ac_15_min,High resolution chromosome dynamics time course of h3k9ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,40
+Weiner_2015_h3k9ac_tp5_30_V64.bw,h3k9ac_30_min,High resolution chromosome dynamics time course of h3k9ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,41
+Weiner_2015_h3k9ac_tp6_60_V64.bw,h3k9ac_60_min,High resolution chromosome dynamics time course of h3k9ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,42
+Weiner_2015_h3k14ac_tp1_0_V64.bw,h3k14ac_0_min,High resolution chromosome dynamics time course of h3k14ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,43
+Weiner_2015_h3k14ac_tp2_4_V64.bw,h3k14ac_4_min,High resolution chromosome dynamics time course of h3k14ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,44
+Weiner_2015_h3k14ac_tp3_8_V64.bw,h3k14ac_8_min,High resolution chromosome dynamics time course of h3k14ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,45
+Weiner_2015_h3k14ac_tp4_15_V64.bw,h3k14ac_15_min,High resolution chromosome dynamics time course of h3k14ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,46
+Weiner_2015_h3k14ac_tp5_30_V64.bw,h3k14ac_30_min,High resolution chromosome dynamics time course of h3k14ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,47
+Weiner_2015_h3k14ac_tp6_60_V64.bw,h3k14ac_60_min,High resolution chromosome dynamics time course of h3k14ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,48
+Weiner_2015_h3k18ac_tp1_0_V64.bw,h3k18ac_0_min,High resolution chromosome dynamics time course of h3k18ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,49
+Weiner_2015_h3k18ac_tp2_4_V64.bw,h3k18ac_4_min,High resolution chromosome dynamics time course of h3k18ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,50
+Weiner_2015_h3k18ac_tp3_8_V64.bw,h3k18ac_8_min,High resolution chromosome dynamics time course of h3k18ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,51
+Weiner_2015_h3k18ac_tp4_15_V64.bw,h3k18ac_15_min,High resolution chromosome dynamics time course of h3k18ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,52
+Weiner_2015_h3k18ac_tp5_30_V64.bw,h3k18ac_30_min,High resolution chromosome dynamics time course of h3k18ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,53
+Weiner_2015_h3k18ac_tp6_60_V64.bw,h3k18ac_60_min,High resolution chromosome dynamics time course of h3k18ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,54
+Weiner_2015_h3k23ac_tp1_0_V64.bw,h3k23ac_0_min,High resolution chromosome dynamics time course of h3k23ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,55
+Weiner_2015_h3k23ac_tp2_4_V64.bw,h3k23ac_4_min,High resolution chromosome dynamics time course of h3k23ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,56
+Weiner_2015_h3k23ac_tp3_8_V64.bw,h3k23ac_8_min,High resolution chromosome dynamics time course of h3k23ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,57
+Weiner_2015_h3k23ac_tp4_15_V64.bw,h3k23ac_15_min,High resolution chromosome dynamics time course of h3k23ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,58
+Weiner_2015_h3k23ac_tp5_30_V64.bw,h3k23ac_30_min,High resolution chromosome dynamics time course of h3k23ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,59
+Weiner_2015_h3k23ac_tp6_60_V64.bw,h3k23ac_60_min,High resolution chromosome dynamics time course of h3k23ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,60
+Weiner_2015_h3k27ac_tp1_0_V64.bw,h3k27ac_0_min,High resolution chromosome dynamics time course of h3k27ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,61
+Weiner_2015_h3k27ac_tp2_4_V64.bw,h3k27ac_4_min,High resolution chromosome dynamics time course of h3k27ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,62
+Weiner_2015_h3k27ac_tp3_8_V64.bw,h3k27ac_8_min,High resolution chromosome dynamics time course of h3k27ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,63
+Weiner_2015_h3k27ac_tp4_15_V64.bw,h3k27ac_15_min,High resolution chromosome dynamics time course of h3k27ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,64
+Weiner_2015_h3k27ac_tp5_30_V64.bw,h3k27ac_30_min,High resolution chromosome dynamics time course of h3k27ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,65
+Weiner_2015_h3k27ac_tp6_60_V64.bw,h3k27ac_60_min,High resolution chromosome dynamics time course of h3k27ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,66
+Weiner_2015_h3k36me_tp1_0_V64.bw,h3k36me_0_min,High resolution chromosome dynamics time course of h3k36me; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,67
+Weiner_2015_h3k36me_tp2_4_V64.bw,h3k36me_4_min,High resolution chromosome dynamics time course of h3k36me; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,68
+Weiner_2015_h3k36me_tp3_8_V64.bw,h3k36me_8_min,High resolution chromosome dynamics time course of h3k36me; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,69
+Weiner_2015_h3k36me_tp4_15_V64.bw,h3k36me_15_min,High resolution chromosome dynamics time course of h3k36me; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,70
+Weiner_2015_h3k36me_tp5_30_V64.bw,h3k36me_30_min,High resolution chromosome dynamics time course of h3k36me; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,71
+Weiner_2015_h3k36me_tp6_60_V64.bw,h3k36me_60_min,High resolution chromosome dynamics time course of h3k36me; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,72
+Weiner_2015_h3k36me2_tp1_0_V64.bw,h3k36me2_0_min,High resolution chromosome dynamics time course of h3k36me2; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,73
+Weiner_2015_h3k36me2_tp2_4_V64.bw,h3k36me2_4_min,High resolution chromosome dynamics time course of h3k36me2; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,74
+Weiner_2015_h3k36me2_tp3_8_V64.bw,h3k36me2_8_min,High resolution chromosome dynamics time course of h3k36me2; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,75
+Weiner_2015_h3k36me2_tp4_15_V64.bw,h3k36me2_15_min,High resolution chromosome dynamics time course of h3k36me2; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,76
+Weiner_2015_h3k36me2_tp5_30_V64.bw,h3k36me2_30_min,High resolution chromosome dynamics time course of h3k36me2; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,77
+Weiner_2015_h3k36me2_tp6_60_V64.bw,h3k36me2_60_min,High resolution chromosome dynamics time course of h3k36me2; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,78
+Weiner_2015_h3k36me3_tp1_0_V64.bw,h3k36me3_0_min,High resolution chromosome dynamics time course of h3k36me3; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,79
+Weiner_2015_h3k36me3_tp2_4_V64.bw,h3k36me3_4_min,High resolution chromosome dynamics time course of h3k36me3; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,80
+Weiner_2015_h3k36me3_tp3_8_V64.bw,h3k36me3_8_min,High resolution chromosome dynamics time course of h3k36me3; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,81
+Weiner_2015_h3k36me3_tp4_15_V64.bw,h3k36me3_15_min,High resolution chromosome dynamics time course of h3k36me3; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,82
+Weiner_2015_h3k36me3_tp5_30_V64.bw,h3k36me3_30_min,High resolution chromosome dynamics time course of h3k36me3; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,83
+Weiner_2015_h3k36me3_tp6_60_V64.bw,h3k36me3_60_min,High resolution chromosome dynamics time course of h3k36me3; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,84
+Weiner_2015_h3k56ac_tp1_0_V64.bw,h3k56ac_0_min,High resolution chromosome dynamics time course of h3k56ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,85
+Weiner_2015_h3k56ac_tp2_4_V64.bw,h3k56ac_4_min,High resolution chromosome dynamics time course of h3k56ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,86
+Weiner_2015_h3k56ac_tp3_8_V64.bw,h3k56ac_8_min,High resolution chromosome dynamics time course of h3k56ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,87
+Weiner_2015_h3k56ac_tp4_15_V64.bw,h3k56ac_15_min,High resolution chromosome dynamics time course of h3k56ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,88
+Weiner_2015_h3k56ac_tp5_30_V64.bw,h3k56ac_30_min,High resolution chromosome dynamics time course of h3k56ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,89
+Weiner_2015_h3k56ac_tp6_60_V64.bw,h3k56ac_60_min,High resolution chromosome dynamics time course of h3k56ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,90
+Weiner_2015_h3k79me_tp1_0_V64.bw,h3k79me_0_min,High resolution chromosome dynamics time course of h3k79me; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,91
+Weiner_2015_h3k79me_tp2_4_V64.bw,h3k79me_4_min,High resolution chromosome dynamics time course of h3k79me; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,92
+Weiner_2015_h3k79me_tp3_8_V64.bw,h3k79me_8_min,High resolution chromosome dynamics time course of h3k79me; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,93
+Weiner_2015_h3k79me_tp4_15_V64.bw,h3k79me_15_min,High resolution chromosome dynamics time course of h3k79me; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,94
+Weiner_2015_h3k79me_tp5_30_V64.bw,h3k79me_30_min,High resolution chromosome dynamics time course of h3k79me; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,95
+Weiner_2015_h3k79me_tp6_60_V64.bw,h3k79me_60_min,High resolution chromosome dynamics time course of h3k79me; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,96
+Weiner_2015_h3k79me3_tp1_0_V64.bw,h3k79me3_0_min,High resolution chromosome dynamics time course of h3k79me3; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,97
+Weiner_2015_h3k79me3_tp2_4_V64.bw,h3k79me3_4_min,High resolution chromosome dynamics time course of h3k79me3; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,98
+Weiner_2015_h3k79me3_tp3_8_V64.bw,h3k79me3_8_min,High resolution chromosome dynamics time course of h3k79me3; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,99
+Weiner_2015_h3k79me3_tp4_15_V64.bw,h3k79me3_15_min,High resolution chromosome dynamics time course of h3k79me3; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,100
+Weiner_2015_h3k79me3_tp5_30_V64.bw,h3k79me3_30_min,High resolution chromosome dynamics time course of h3k79me3; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,101
+Weiner_2015_h3k79me3_tp6_60_V64.bw,h3k79me3_60_min,High resolution chromosome dynamics time course of h3k79me3; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,102
+Weiner_2015_h3s10ph_tp1_0_V64.bw,h3s10ph_0_min,High resolution chromosome dynamics time course of h3s10ph; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,103
+Weiner_2015_h3s10ph_tp2_4_V64.bw,h3s10ph_4_min,High resolution chromosome dynamics time course of h3s10ph; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,104
+Weiner_2015_h3s10ph_tp3_8_V64.bw,h3s10ph_8_min,High resolution chromosome dynamics time course of h3s10ph; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,105
+Weiner_2015_h3s10ph_tp4_15_V64.bw,h3s10ph_15_min,High resolution chromosome dynamics time course of h3s10ph; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,106
+Weiner_2015_h3s10ph_tp5_30_V64.bw,h3s10ph_30_min,High resolution chromosome dynamics time course of h3s10ph; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,107
+Weiner_2015_h3s10ph_tp6_60_V64.bw,h3s10ph_60_min,High resolution chromosome dynamics time course of h3s10ph; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,108
+Weiner_2015_h4k5ac_tp1_0_V64.bw,h4k5ac_0_min,High resolution chromosome dynamics time course of h4k5ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,109
+Weiner_2015_h4k5ac_tp2_4_V64.bw,h4k5ac_4_min,High resolution chromosome dynamics time course of h4k5ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,110
+Weiner_2015_h4k5ac_tp3_8_V64.bw,h4k5ac_8_min,High resolution chromosome dynamics time course of h4k5ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,111
+Weiner_2015_h4k5ac_tp4_15_V64.bw,h4k5ac_15_min,High resolution chromosome dynamics time course of h4k5ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,112
+Weiner_2015_h4k5ac_tp5_30_V64.bw,h4k5ac_30_min,High resolution chromosome dynamics time course of h4k5ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,113
+Weiner_2015_h4k5ac_tp6_60_V64.bw,h4k5ac_60_min,High resolution chromosome dynamics time course of h4k5ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,114
+Weiner_2015_h4k8ac_tp1_0_V64.bw,h4k8ac_0_min,High resolution chromosome dynamics time course of h4k8ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,115
+Weiner_2015_h4k8ac_tp2_4_V64.bw,h4k8ac_4_min,High resolution chromosome dynamics time course of h4k8ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,116
+Weiner_2015_h4k8ac_tp3_8_V64.bw,h4k8ac_8_min,High resolution chromosome dynamics time course of h4k8ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,117
+Weiner_2015_h4k8ac_tp4_15_V64.bw,h4k8ac_15_min,High resolution chromosome dynamics time course of h4k8ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,118
+Weiner_2015_h4k8ac_tp5_30_V64.bw,h4k8ac_30_min,High resolution chromosome dynamics time course of h4k8ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,119
+Weiner_2015_h4k8ac_tp6_60_V64.bw,h4k8ac_60_min,High resolution chromosome dynamics time course of h4k8ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,120
+Weiner_2015_h4k12ac_tp1_0_V64.bw,h4k12ac_0_min,High resolution chromosome dynamics time course of h4k12ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,121
+Weiner_2015_h4k12ac_tp2_4_V64.bw,h4k12ac_4_min,High resolution chromosome dynamics time course of h4k12ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,122
+Weiner_2015_h4k12ac_tp3_8_V64.bw,h4k12ac_8_min,High resolution chromosome dynamics time course of h4k12ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,123
+Weiner_2015_h4k12ac_tp4_15_V64.bw,h4k12ac_15_min,High resolution chromosome dynamics time course of h4k12ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,124
+Weiner_2015_h4k12ac_tp5_30_V64.bw,h4k12ac_30_min,High resolution chromosome dynamics time course of h4k12ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,125
+Weiner_2015_h4k12ac_tp6_60_V64.bw,h4k12ac_60_min,High resolution chromosome dynamics time course of h4k12ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,126
+Weiner_2015_h4k16ac_tp1_0_V64.bw,h4k16ac_0_min,High resolution chromosome dynamics time course of h4k16ac; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,127
+Weiner_2015_h4k16ac_tp2_4_V64.bw,h4k16ac_4_min,High resolution chromosome dynamics time course of h4k16ac; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,128
+Weiner_2015_h4k16ac_tp3_8_V64.bw,h4k16ac_8_min,High resolution chromosome dynamics time course of h4k16ac; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,129
+Weiner_2015_h4k16ac_tp4_15_V64.bw,h4k16ac_15_min,High resolution chromosome dynamics time course of h4k16ac; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,130
+Weiner_2015_h4k16ac_tp5_30_V64.bw,h4k16ac_30_min,High resolution chromosome dynamics time course of h4k16ac; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,131
+Weiner_2015_h4k16ac_tp6_60_V64.bw,h4k16ac_60_min,High resolution chromosome dynamics time course of h4k16ac; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,132
+Weiner_2015_h4k20me_tp1_0_V64.bw,h4k20me_0_min,High resolution chromosome dynamics time course of h4k20me; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,133
+Weiner_2015_h4k20me_tp2_4_V64.bw,h4k20me_4_min,High resolution chromosome dynamics time course of h4k20me; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,134
+Weiner_2015_h4k20me_tp3_8_V64.bw,h4k20me_8_min,High resolution chromosome dynamics time course of h4k20me; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,135
+Weiner_2015_h4k20me_tp4_15_V64.bw,h4k20me_15_min,High resolution chromosome dynamics time course of h4k20me; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,136
+Weiner_2015_h4k20me_tp5_30_V64.bw,h4k20me_30_min,High resolution chromosome dynamics time course of h4k20me; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,137
+Weiner_2015_h4k20me_tp6_60_V64.bw,h4k20me_60_min,High resolution chromosome dynamics time course of h4k20me; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,138
+Weiner_2015_h4r3me_tp1_0_V64.bw,h4r3me_0_min,High resolution chromosome dynamics time course of h4r3me; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,139
+Weiner_2015_h4r3me_tp2_4_V64.bw,h4r3me_4_min,High resolution chromosome dynamics time course of h4r3me; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,140
+Weiner_2015_h4r3me_tp3_8_V64.bw,h4r3me_8_min,High resolution chromosome dynamics time course of h4r3me; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,141
+Weiner_2015_h4r3me_tp4_15_V64.bw,h4r3me_15_min,High resolution chromosome dynamics time course of h4r3me; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,142
+Weiner_2015_h4r3me_tp5_30_V64.bw,h4r3me_30_min,High resolution chromosome dynamics time course of h4r3me; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,143
+Weiner_2015_h4r3me_tp6_60_V64.bw,h4r3me_60_min,High resolution chromosome dynamics time course of h4r3me; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,144
+Weiner_2015_h4r3me2s_tp1_0_V64.bw,h4r3me2s_0_min,High resolution chromosome dynamics time course of h4r3me2s; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,145
+Weiner_2015_h4r3me2s_tp2_4_V64.bw,h4r3me2s_4_min,High resolution chromosome dynamics time course of h4r3me2s; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,146
+Weiner_2015_h4r3me2s_tp3_8_V64.bw,h4r3me2s_8_min,High resolution chromosome dynamics time course of h4r3me2s; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,147
+Weiner_2015_h4r3me2s_tp4_15_V64.bw,h4r3me2s_15_min,High resolution chromosome dynamics time course of h4r3me2s; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,148
+Weiner_2015_h4r3me2s_tp5_30_V64.bw,h4r3me2s_30_min,High resolution chromosome dynamics time course of h4r3me2s; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,149
+Weiner_2015_h4r3me2s_tp6_60_V64.bw,h4r3me2s_60_min,High resolution chromosome dynamics time course of h4r3me2s; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,150
+Weiner_2015_htz1_tp1_0_V64.bw,htz1_0_min,High resolution chromosome dynamics time course of htz1; 0 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,151
+Weiner_2015_htz1_tp2_4_V64.bw,htz1_4_min,High resolution chromosome dynamics time course of htz1; 4 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,152
+Weiner_2015_htz1_tp3_8_V64.bw,htz1_8_min,High resolution chromosome dynamics time course of htz1; 8 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,153
+Weiner_2015_htz1_tp4_15_V64.bw,htz1_15_min,High resolution chromosome dynamics time course of htz1; 15 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,154
+Weiner_2015_htz1_tp5_30_V64.bw,htz1_30_min,High resolution chromosome dynamics time course of htz1; 30 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,155
+Weiner_2015_htz1_tp6_60_V64.bw,htz1_60_min,High resolution chromosome dynamics time course of htz1; 60 minutes after daimide addition,,,DNA extract,OBI:0001051,S288C,156
+dpl1del.bw,dpl1del,Functional mapping of yeast genomes by saturated transposition,,,DNA extract,OBI:0001051,S288C,1
+mmm1delVps13D716H.bw,mmm1delVps13D716H,Functional mapping of yeast genomes by saturated transposition,,,DNA extract,OBI:0001051,S288C,2
+psd2dpl1del.bw,psd2dpl1del,Functional mapping of yeast genomes by saturated transposition,,,DNA extract,OBI:0001051,S288C,3
+Vps13D716H.bw,Vps13D716H,Functional mapping of yeast genomes by saturated transposition,,,DNA extract,OBI:0001051,S288C,4
+WildType1.bw,WildType1,Functional mapping of yeast genomes by saturated transposition,,,DNA extract,OBI:0001051,S288C,5
+WildType2.bw,WildType2,Functional mapping of yeast genomes by saturated transposition,,,DNA extract,OBI:0001051,S288C,6
+WTplusRapamycin.bw,WTplusRapamycin,Functional mapping of yeast genomes by saturated transposition,,,DNA extract,OBI:0001051,S288C,7
+Yen1on.bw,Yen1on,Functional mapping of yeast genomes by saturated transposition,,,DNA extract,OBI:0001051,S288C,8
+Mao_2017_mag1-0hr_NMPseq_Areads-minus_v64.bw,mag1_0hr_NMPseq_Areads_minus,NMP adenine lesions on the minus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 0 hour time point,,,DNA extract,OBI:0001051,S288C,1
+Mao_2017_mag1-1hr_NMPseq_Areads-minus_v64.bw,mag1_1hr_NMPseq_Areads_minus,NMP adenine lesions on the minus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 1 hour time point,,,DNA extract,OBI:0001051,S288C,2
+Mao_2017_mag1-2hr_NMPseq_Areads-minus_v64.bw,mag1_2hr_NMPseq_Areads_minus,NMP adenine lesions on the minus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 2 hour time point,,,DNA extract,OBI:0001051,S288C,3
+Mao_2017_mag1-0hr_NMPseq_Areads-plus_v64.bw,mag1_0hr_NMPseq_Areads_plus,NMP adenine lesions on the plus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 0 hour time point,,,DNA extract,OBI:0001051,S288C,4
+Mao_2017_mag1-1hr_NMPseq_Areads-plus_v64.bw,mag1_1hr_NMPseq_Areads_plus,NMP adenine lesions on the plus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 1 hour time point,,,DNA extract,OBI:0001051,S288C,5
+Mao_2017_mag1-2hr_NMPseq_Areads-plus_v64.bw,mag1_2hr_NMPseq_Areads_plus,NMP adenine lesions on the plus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 2 hour time point,,,DNA extract,OBI:0001051,S288C,6
+Mao_2017_mag1-0hr_NMPseq_Greads-minus_v64.bw,mag1_0hr_NMPseq_Greads_minus,NMP guanine lesions on the minus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 0 hour time point,,,DNA extract,OBI:0001051,S288C,7
+Mao_2017_mag1-1hr_NMPseq_Greads-minus_v64.bw,mag1_1hr_NMPseq_Greads_minus,NMP guanine lesions on the minus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 1 hour time point,,,DNA extract,OBI:0001051,S288C,8
+Mao_2017_mag1-2hr_NMPseq_Greads-minus_v64.bw,mag1_2hr_NMPseq_Greads_minus,NMP guanine lesions on the minus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 2 hour time point,,,DNA extract,OBI:0001051,S288C,9
+Mao_2017_mag1-0hr_NMPseq_Greads-plus_v64.bw,mag1_0hr_NMPseq_Greads_plus,NMP guanine lesions on the plus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 0 hour time point,,,DNA extract,OBI:0001051,S288C,10
+Mao_2017_mag1-1hr_NMPseq_Greads-plus_v64.bw,mag1_1hr_NMPseq_Greads_plus,NMP guanine lesions on the plus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 1 hour time point,,,DNA extract,OBI:0001051,S288C,11
+Mao_2017_mag1-2hr_NMPseq_Greads-plus_v64.bw,mag1_2hr_NMPseq_Greads_plus,NMP guanine lesions on the plus strand in mag1 deletion strain under methyl methanesulfonate (MMS)-induced alkylation at 2 hour time point,,,DNA extract,OBI:0001051,S288C,12
+Mao_2017_wt-0hr_NMPseq_Areads-minus_v64.bw,wt_0hr_NMPseq_Areads_minus,NMP adenine lesions on the minus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 0 hour time point,,,DNA extract,OBI:0001051,S288C,13
+Mao_2017_wt-1hr_NMPseq_Areads-minus_v64.bw,wt_1hr_NMPseq_Areads_minus,NMP adenine lesions on the minus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 1 hour time point,,,DNA extract,OBI:0001051,S288C,14
+Mao_2017_wt-2hr_NMPseq_Areads-minus_v64.bw,wt_2hr_NMPseq_Areads_minus,NMP adenine lesions on the minus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 2 hour time point,,,DNA extract,OBI:0001051,S288C,15
+Mao_2017_wt-0hr_NMPseq_Areads-plus_v64.bw,wt_0hr_NMPseq_Areads_plus,NMP adenine lesions on the plus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 0 hour time point,,,DNA extract,OBI:0001051,S288C,16
+Mao_2017_wt-1hr_NMPseq_Areads-plus_v64.bw,wt_1hr_NMPseq_Areads_plus,NMP adenine lesions on the plus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 1 hour time point,,,DNA extract,OBI:0001051,S288C,17
+Mao_2017_wt-2hr_NMPseq_Areads-plus_v64.bw,wt_2hr_NMPseq_Areads_plus,NMP adenine lesions on the plus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 2 hour time point,,,DNA extract,OBI:0001051,S288C,18
+Mao_2017_wt-0hr_NMPseq_Greads-minus_v64.bw,wt_0hr_NMPseq_Greads_minus,NMP guanine lesions on the minus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 0 hour time point,,,DNA extract,OBI:0001051,S288C,19
+Mao_2017_wt-1hr_NMPseq_Greads-minus_v64.bw,wt_1hr_NMPseq_Greads_minus,NMP guanine lesions on the minus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 1 hour time point,,,DNA extract,OBI:0001051,S288C,20
+Mao_2017_wt-2hr_NMPseq_Greads-minus_v64.bw,wt_2hr_NMPseq_Greads_minus,NMP guanine lesions on the minus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 2 hour time point,,,DNA extract,OBI:0001051,S288C,21
+Mao_2017_wt-0hr_NMPseq_Greads-plus_v64.bw,wt_0hr_NMPseq_Greads_plus,NMP guanine lesions on the plus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 0 hour time point,,,DNA extract,OBI:0001051,S288C,22
+Mao_2017_wt-1hr_NMPseq_Greads-plus_v64.bw,wt_1hr_NMPseq_Greads_plus,NMP guanine lesions on the plus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 1 hour time point,,,DNA extract,OBI:0001051,S288C,23
+Mao_2017_wt-2hr_NMPseq_Greads-plus_v64.bw,wt_2hr_NMPseq_Greads_plus,NMP guanine lesions on the plus strand in strain expressing WT MAG1 under methyl methanesulfonate (MMS)-induced alkylation at 2 hour time point,,,DNA extract,OBI:0001051,S288C,24
+Freeberg_2013_gPARCLIP_V64.gff3,Freeberg_2013_gPARCLIP,global PARCLIP RBP crosslinking sites for mid log phase cells in SD media,,,polyA RNA extract,OBI:0000869,S288C,1
+Freeberg_2013_gPARCLIP-glucose_V64.gff3,Freeberg_2013_gPARCLIP_glucose,global PARCLIP RBP crosslinking sites for mid log phase cells in glucose deficient media,,,polyA RNA extract,OBI:0000869,S288C,2
+Freeberg_2013_gPARCLIP-nitrogen_V64.gff3,Freeberg_2013_gPARCLIP_nitrogen,global PARCLIP RBP crosslinking sites for mid log phase cells in nitrogen deficient media,,,polyA RNA extract,OBI:0000869,S288C,3
+Freeberg_2013_Puf3p_PARCLIP_V64.gff3,Freeberg_2013_Puf3p_PARCLIP,Puf3p PARCLIP crosslinking sites for mid log phase cells in SD media,,,polyA RNA extract,OBI:0000869,S288C,4
+Freeberg_2013_mRNAseq_V64.gff3,Freeberg_2013_mRNAseq,gene transcript abundance for mid log phase cells in SD media,,,polyA RNA extract,OBI:0000869,S288C,5
+Freeberg_2013_mRNAseq-glucose_V64.gff3,Freeberg_2013_mRNAseq_glucose,gene transcript abundance for mid log phase cells in glucose deficient media,,,polyA RNA extract,OBI:0000869,S288C,6
+Freeberg_2013_mRNAseq-nitrogen_V64.gff3,Freeberg_2013_mRNAseq_nitrogen,gene transcript abundance for mid log phase cells in nitrogen deficient media,,,polyA RNA extract,OBI:0000869,S288C,7

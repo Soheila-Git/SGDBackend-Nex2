@@ -31,13 +31,23 @@ SGD_SOURCE_ID = 834
 
 logging.basicConfig(level=logging.INFO)
 
-def create_and_upload_file(obj, row_num, sftp_client):
+def create_and_upload_file(obj, row_num, sftp_client, flag=False):
     try:
         # find on local system
-        remote_file_path = DATA_DIR + '/' + obj['bun_path']
+        if 'data.local' in obj['bun_path']:
+            remote_file_path = obj['bun_path']
+        else:
+            remote_file_path = DATA_DIR + '/' + obj['bun_path']
         # special transformations
-        remote_file_path = remote_file_path.replace('feature/', 'features/')
-        remote_file = sftp_client.open(remote_file_path)
+        if '/share/bun/www-data/html' in obj['bun_path']:
+            remote_file_path = remote_file_path.replace(
+                '/share/bun/www-data/html','')
+        remote_file_path = remote_file_path.replace('//', '/').replace('feature/', 'features/')
+        if flag:
+            remote_file_path = remote_file_path + obj['display_name']
+            remote_file = sftp_client.open(remote_file_path)
+        else:
+            remote_file = sftp_client.open(remote_file_path)
     except IOError:
         logging.error('error opening file ' + str(row_num))
         traceback.print_exc()
@@ -58,6 +68,7 @@ def create_and_upload_file(obj, row_num, sftp_client):
         # see if already exists, if not create
         existing = db_session.query(Filedbentity).filter(Filedbentity.display_name == obj['display_name']).one_or_none()
         source_id = db_session.query(Source.source_id).filter(Source.display_name==obj['source']).one_or_none()[0]
+        import pdb ; pdb.set_trace()
         if not existing:
             try:
                 data_id = db_session.query(Edam.edam_id).filter(Edam.edamid==obj['data_edam_id']).one_or_none()[0]
@@ -66,6 +77,7 @@ def create_and_upload_file(obj, row_num, sftp_client):
             except TypeError:
                 logging.error('invalid EDAM id or source in row ' + str(row_num) + ' val in ' + obj['data_edam_id'] + ', ' + obj['format_edam_id'] + ', ' + obj['topic_edam_id'])
                 return
+
             upload_file(CREATED_BY, remote_file,
                 filename=obj['display_name'],
                 file_extension=obj['file_extension'],
@@ -151,7 +163,10 @@ def create_and_upload_file(obj, row_num, sftp_client):
                 db_session.flush()
         remote_file.close()
         logging.info('finished ' + obj['display_name'] + ', line ' + str(row_num))
-    except:
+    except Exception as ex:
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        print message
         logging.error('error with ' + obj['display_name']+ ' in row ' + str(row_num))
         traceback.print_exc()
         db_session.rollback()
@@ -231,7 +246,11 @@ def load_csv_filedbentities():
                 'pmids': val[20],
                 'keywords': val[21]
             }
-            create_and_upload_file(obj, i, sftp_client)
+
+            if 'file_metadata' in INPUT_FILE_NAME:
+                create_and_upload_file(obj, i, sftp_client, True)
+            else:
+                create_and_upload_file(obj, i, sftp_client)
     client.close()
 
 if __name__ == '__main__':

@@ -79,3 +79,9 @@ upload-expression-details:
 
 load-triage:
 	source dev_variables.sh && python scripts/loading/load_reference_triage.py
+
+load-file-metadata:
+	source dev_variables.sh && CREATED_BY=FGONDWE INPUT_FILE_NAME=scripts/loading/files/data_dump/file_metadata_93genomes20180517.csv python scripts/loading/files/load_filedbentities.py
+
+load-dataset-metadata:
+	source dev_variables.sh && CREATED_BY=FGONDWE INPUT_FILE_NAME=scripts/loading/files/data_dump/dataset_metadata_201805_1.csv python scripts/loading/files/load_filedbentities.py
