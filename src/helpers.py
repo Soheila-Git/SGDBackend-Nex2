@@ -309,7 +309,9 @@ def upload_file(username, file, **kwargs):
         fdb = DBSession.query(Filedbentity).filter(
             Filedbentity.dbentity_id == did).one_or_none()
         fdb.upload_file_to_s3(file, filename)
+        #file.close()
     except Exception as e:
+        traceback.print_exc()
         DBSession.rollback()
         DBSession.remove()
         raise (e)

@@ -101,7 +101,9 @@ pycall_graph_images
 index_*.png
 *.env
 src/Untitled*
-#/files/data_dump
+/files/data_dump
+s3_data_files
+*large_s3*
 
 
 

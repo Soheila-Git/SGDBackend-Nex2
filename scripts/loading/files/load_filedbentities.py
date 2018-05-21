@@ -1,5 +1,7 @@
 import csv
 import os
+from os.path import expanduser
+home = expanduser("~")
 import logging
 import re
 from datetime import datetime
@@ -24,7 +26,7 @@ import traceback
 DATA_DIR = '/data.s3/html'
 HOSTNAME = 'bun.stanford.edu'
 INPUT_FILE_NAME = os.environ.get('INPUT_FILE_NAME')
-LOCAL_FILE_DIRECTORY = os.environ.get('LOCAL_FILE_DIRECTORY')
+LOCAL_FILE_DIRECTORY = home + os.environ.get('LOCAL_FILE_DIRECTORY')
 NEX2_URI = os.environ.get('NEX2_URI')
 CREATED_BY = os.environ.get('CREATED_BY')
 SGD_SOURCE_ID = 834
@@ -34,6 +36,12 @@ logging.basicConfig(level=logging.INFO)
 def create_and_upload_file(obj, row_num, sftp_client, flag=False):
     try:
         # find on local system
+        #import pdb;       pdb.set_trace()
+        local_path = LOCAL_FILE_DIRECTORY + obj['display_name']
+        local_file = open(local_path)
+        #import pdb;       pdb.set_trace()
+
+        '''
         if 'data.local' in obj['bun_path']:
             remote_file_path = obj['bun_path']
         else:
@@ -43,17 +51,19 @@ def create_and_upload_file(obj, row_num, sftp_client, flag=False):
             remote_file_path = remote_file_path.replace(
                 '/share/bun/www-data/html','')
         remote_file_path = remote_file_path.replace('//', '/').replace('feature/', 'features/')
+        #open local files
         if flag:
             remote_file_path = remote_file_path + obj['display_name']
             remote_file = sftp_client.open(remote_file_path)
         else:
-            remote_file = sftp_client.open(remote_file_path)
+            remote_file = sftp_client.open(remote_file_path)'''
     except IOError:
         logging.error('error opening file ' + str(row_num))
         traceback.print_exc()
         return
 
     try:
+
         temp_engine = create_engine(NEX2_URI)
         session_factory = sessionmaker(bind=temp_engine, extension=ZopeTransactionExtension(), expire_on_commit=False)
         db_session = scoped_session(session_factory)
@@ -68,7 +78,6 @@ def create_and_upload_file(obj, row_num, sftp_client, flag=False):
         # see if already exists, if not create
         existing = db_session.query(Filedbentity).filter(Filedbentity.display_name == obj['display_name']).one_or_none()
         source_id = db_session.query(Source.source_id).filter(Source.display_name==obj['source']).one_or_none()[0]
-        import pdb ; pdb.set_trace()
         if not existing:
             try:
                 data_id = db_session.query(Edam.edam_id).filter(Edam.edamid==obj['data_edam_id']).one_or_none()[0]
@@ -78,7 +87,7 @@ def create_and_upload_file(obj, row_num, sftp_client, flag=False):
                 logging.error('invalid EDAM id or source in row ' + str(row_num) + ' val in ' + obj['data_edam_id'] + ', ' + obj['format_edam_id'] + ', ' + obj['topic_edam_id'])
                 return
 
-            upload_file(CREATED_BY, remote_file,
+            upload_file(CREATED_BY, local_file,
                 filename=obj['display_name'],
                 file_extension=obj['file_extension'],
                 description=obj['description'],
@@ -94,6 +103,7 @@ def create_and_upload_file(obj, row_num, sftp_client, flag=False):
                 readme_file_id=readme_file_id,
                 source_id=source_id
             )
+
             db_session.flush()
         else:
             existing.display_name = obj['display_name']
@@ -105,20 +115,21 @@ def create_and_upload_file(obj, row_num, sftp_client, flag=False):
             existing.source_id = source_id
             # update file size
             if not existing.file_size and existing.s3_url:
-                remote_file.seek(0, os.SEEK_END)
-                file_size = remote_file.tell()
-                remote_file.seek(0)
+                local_file.seek(0, os.SEEK_END)
+                print 'file size: ' + str(local_file.tell())
+                file_size = local_file.tell()
+                local_file.seek(0)
                 existing.file_size = file_size
             if obj['file_date']:
                 existing.file_date = obj['file_date']
                 existing.year = obj['file_date'].year
             existing.readme_file_id = readme_file_id
-            remote_file.seek(0, os.SEEK_END)
+            local_file.seek(0, os.SEEK_END)
             transaction.commit()
             existing = db_session.query(Filedbentity).filter(Filedbentity.display_name == obj['display_name']).one_or_none()
             # only upload s3 file if not defined
             if existing.s3_url is None:
-                existing.upload_file_to_s3(remote_file, obj['display_name'])
+                existing.upload_file_to_s3(local_file, obj['display_name'])
             db_session.flush()
         # add path entries
         existing = db_session.query(Filedbentity).filter(Filedbentity.display_name == obj['display_name']).one_or_none()
@@ -161,7 +172,7 @@ def create_and_upload_file(obj, row_num, sftp_client, flag=False):
                     db_session.add(new_file_keyword)
                 transaction.commit()
                 db_session.flush()
-        remote_file.close()
+        #local_file.close()
         logging.info('finished ' + obj['display_name'] + ', line ' + str(row_num))
     except Exception as ex:
         template = "An exception of type {0} occurred. Arguments:\n{1!r}"
@@ -192,12 +203,12 @@ def load_csv_filedbentities():
     DBSession.configure(bind=engine)
 
     # open ssh connection to download server
-    client = paramiko.SSHClient()
+    '''client = paramiko.SSHClient()
     client.load_system_host_keys()
     username = raw_input('Username for legacy download server: ')
     password =  getpass.getpass('Password for %s@%s: ' % (username, HOSTNAME))
     client.connect(HOSTNAME, 22, username, password, gss_auth=False, gss_kex=False)
-    sftp_client = client.open_sftp()
+    sftp_client = client.open_sftp()'''
 
     o = open(INPUT_FILE_NAME,'rU')
     reader = csv.reader(o)
@@ -248,10 +259,10 @@ def load_csv_filedbentities():
             }
 
             if 'file_metadata' in INPUT_FILE_NAME:
-                create_and_upload_file(obj, i, sftp_client, True)
+                create_and_upload_file(obj, i, None, True)
             else:
-                create_and_upload_file(obj, i, sftp_client)
-    client.close()
+                create_and_upload_file(obj, i, None)
+    #client.close()
 
 if __name__ == '__main__':
     load_csv_filedbentities()
