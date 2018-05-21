@@ -26,7 +26,7 @@ import traceback
 DATA_DIR = '/data.s3/html'
 HOSTNAME = 'bun.stanford.edu'
 INPUT_FILE_NAME = os.environ.get('INPUT_FILE_NAME')
-LOCAL_FILE_DIRECTORY = home + os.environ.get('LOCAL_FILE_DIRECTORY')
+LOCAL_FILE_DIRECTORY = str(home) + str(os.environ.get('LOCAL_FILE_DIRECTORY'))
 NEX2_URI = os.environ.get('NEX2_URI')
 CREATED_BY = os.environ.get('CREATED_BY')
 SGD_SOURCE_ID = 834
