@@ -117,7 +117,10 @@
                "200":{  
                   "description":"posttranslational protein data",
                   "schema":{  
-                     "type":"array"
+                     "type":"array",
+                     "items": {
+                        "$ref": "#/definitions/posttranslational_detail"
+                     }
                   }
                }
             }
@@ -142,7 +145,10 @@
                "200":{  
                   "description":"metadata and data values for protein experiments",
                   "schema":{  
-                     "type":"array"
+                     "type":"array",
+                     "items": {
+                        "$ref": "#/definitions/protein_experiment"
+                     }
                   }
                }
             }
@@ -167,7 +173,10 @@
                "200":{  
                   "description":"protein domains, their sources, and their positions relative to protein sequence",
                   "schema":{  
-                     "type":"array"
+                     "type":"array",
+                     "items": {
+                        "$ref": "#/definitions/protein_domain"
+                    }
                   }
                }
             }
@@ -192,7 +201,10 @@
                "200":{  
                   "description":"GO (gene ontology) annotations and the references used to make them",
                   "schema":{  
-                     "type":"array"
+                     "type":"array",
+                     "items": {
+                        "$ref": "#/definitions/go_annotation"
+                    }
                   }
                }
             }
@@ -217,7 +229,10 @@
                "200":{  
                   "description":"phenotype annotations and the references used to make them",
                   "schema":{  
-                     "type":"array"
+                     "type":"array",
+                     "items": {
+                        "$ref": "#/definitions/phenotype_annotation"
+                     }
                   }
                }
             }
@@ -242,7 +257,10 @@
                "200":{  
                   "description":"interaction annotations and the references used to make them",
                   "schema":{  
-                     "type":"array"
+                     "type":"array",
+                     "items": {
+                        "$ref": "#/definitions/interaction_annotation"
+                     }
                   }
                }
             }
@@ -267,7 +285,10 @@
                "200":{  
                   "description":"regulation annotations and the references used to make them",
                   "schema":{  
-                     "type":"array"
+                     "type":"array",
+                     "items": {
+                        "$ref": "#/definitions/regulation_annotation"
+                     }
                   }
                }
             }
@@ -292,7 +313,7 @@
                "200":{  
                   "description":"references which refer to a gene, organized by subject of relevance",
                   "schema":{  
-                     "type":"array"
+                     "type":"object"
                   }
                }
             }
@@ -392,11 +413,37 @@
                "200":{  
                   "description":"a list of genes annotated to a GO term",
                   "schema":{  
-                     "type":"array"
+                     "type":"array",
+                     "items": {
+                        "$ref": "#/definitions/go_annotation"
+                     }
                   }
                }
             }
          }
+      }
+   },
+   "definitions": {
+      "protein_domain": {
+         "type": "object"
+      },
+      "posttranslational_detail": {
+         "type": "object"
+      },
+      "phenotype_annotation": {
+         "type": "object"
+      },
+      "go_annotation": {
+         "type": "object"
+      },
+      "protein_experiment": {
+         "type": "object"
+      },
+      "interaction_annotation": {
+         "type": "object"
+      },
+      "regulation_annotation": {
+         "type": "object"
       }
    },
    "externalDocs":{  
