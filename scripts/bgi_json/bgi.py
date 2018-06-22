@@ -268,16 +268,18 @@ def get_bgi_data(soFlag=False):
             if(len(result) > 0):
                 output_obj = {
                     "data": result,
-                    "metaData": {
-                        "dataProvider":
-                            "SGD",
-                        "dateProduced":
-                            datetime.utcnow().strftime("%Y-%m-%dT%H:%m:%S-00:00"),
-                        "release":
-                            "SGD 1.0.0.0 " + datetime.utcnow().strftime("%Y-%m-%d")
+                    "metaData":{
+                        "dataProvider": [
+                            {
+                                "crossReference":{
+                                    "id": "SGD"
+                                }
+                            }
+                        ],
+                        "dateProduced": datetime.utcnow().strftime("%Y-%m-%dT%H:%m:%S-00:00")
                     }
                 }
-                fileStr = './scripts/bgi_json/data_dump/SGD.1.0.0.0_basicGeneInformation_' + str(randint(0, 1000)) + '.json'
+                fileStr = './scripts/bgi_json/data_dump/SGD.1.0.0.4_basicGeneInformation_' + str(randint(0, 1000)) + '.json'
                 with open(fileStr, 'w+') as res_file:
                     res_file.write(json.dumps(output_obj))
 
@@ -345,10 +347,10 @@ def get_phenotype_data():
                 "phenotypeStatement": "",
                 "dateAssigned": ""
             }
-            if item.reference.pmid:
+            '''if item.reference.pmid:
                 obj["pubMedId"] = "PMID:" + str(item.reference.pmid)
             else:
-                obj["pubModId"] = "SGD:" + str(item.reference.sgdid)
+                obj["pubModId"] = "SGD:" + str(item.reference.sgdid)'''
             if item.phenotype.qualifier:
                 pString = item.phenotype.qualifier.display_name
                 obj["phenotypeTermIdentifiers"].append({
@@ -377,17 +379,19 @@ def get_phenotype_data():
 
         if len(result) > 0:
             output_obj = {
-                "data": result,
-                "metaData": {
-                    "dataProvider":
-                        "SGD",
-                    "dateProduced":
-                        datetime.utcnow().strftime("%Y-%m-%dT%H:%m:%S-00:00"),
-                    "release":
-                        "SGD 1.0.0.3 " + datetime.utcnow().strftime("%Y-%m-%d")
+                    "data": result,
+                    "metaData":{
+                        "dataProvider": [
+                            {
+                                "crossReference":{
+                                    "id": "SGD"
+                                }
+                            }
+                        ],
+                        "dateProduced": datetime.utcnow().strftime("%Y-%m-%dT%H:%m:%S-00:00")
+                    }
                 }
-            }
-            fileStr = './scripts/bgi_json/data_dump/SGD.1.0.0.4_phenotype_' + str(randint(0, 1000)) + '.json'
+            fileStr = './scripts/bgi_json/data_dump/SGD.1.0.0.4_phenotype.json'
             with open(fileStr, 'w+') as res_file:
                 res_file.write(json.dumps(output_obj))
 
