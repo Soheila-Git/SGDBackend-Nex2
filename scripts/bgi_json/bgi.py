@@ -1,4 +1,4 @@
-from src.models import DBSession, Base, Colleague, ColleagueLocus, Dbentity, Locusdbentity, LocusUrl, LocusAlias, Dnasequenceannotation, So, Locussummary, Phenotypeannotation, PhenotypeannotationCond, Phenotype, Goannotation, Go, Goslimannotation, Goslim, Apo, Straindbentity, Strainsummary, Reservedname, GoAlias, Goannotation, Referencedbentity, Referencedocument, Referenceauthor, ReferenceAlias, Chebi
+from src.models import DBSession, Base, Colleague, ColleagueLocus, Dbentity, Goextension, Locusdbentity, LocusUrl, LocusAlias, Dnasequenceannotation, So, Locussummary, Phenotypeannotation, PhenotypeannotationCond, Phenotype, Goannotation, Go, Goslimannotation, Goslim, Apo, Straindbentity, Strainsummary, Reservedname, GoAlias, Goannotation, Referencedbentity, Referencedocument, Referenceauthor, ReferenceAlias, Chebi
 from sqlalchemy import create_engine, and_, inspect
 import os
 import json
@@ -16,6 +16,103 @@ engine = create_engine(os.environ['NEX2_URI'], pool_recycle=3600)
 DBSession.configure(bind=engine)
 Base.metadata.bind = engine
 
+
+def get_goext():
+    ext_data = DBSession.query(Goextension).all()
+    if ext_data:
+        obj = {}
+        for item in ext_data:
+            if item.ro.roid == 'NTR:0000002' or item.ro.roid == 'RO:0002092':
+                if item.annotation_id in obj:
+                    obj[item.annotation_id].append(item.annotation_id)
+                else:
+                    obj[item.annotation_id] = []
+        return obj
+    return None
+
+
+def get_goannotation_data():
+    flag_ship = {}
+    data = []
+    metadata = {}
+    main_obj = {}
+    xcontainer = {
+        'GO:0000749': 'GO:0000749',
+        'GO:0006974': 'GO:0006974',
+        'GO:0006995': 'GO:0006995',
+        'GO:0009408': 'GO:0009408',
+        'GO:0033554': 'GO:0033554',
+        'GO:0034198': 'GO:0034198',
+        'GO:0034599': 'GO:0034599',
+        'GO:0034605': 'GO:0034605',
+        'GO:0034614': 'GO:0034614',
+        'GO:0042149': 'GO:0042149',
+        'GO:0070301': 'GO:0070301',
+        'GO:0071311': 'GO:0071311',
+        'GO:0071333': 'GO:0071333',
+        'GO:0071361': 'GO:0071361',
+        'GO:0071400': 'GO:0071400',
+        'GO:0071456': 'GO:0071456',
+        'GO:0071470': 'GO:0071470',
+        'GO:0071474': 'GO:0071474',
+        'GO:0097185': 'GO:0097185'
+    }
+    ext_temp = get_goext()
+    go_annot_data = DBSession.query(Goannotation).filter(
+        Goannotation.annotation_type != 'computational',
+        Goannotation.eco_id != 236340).all()
+    for item in go_annot_data:
+
+        obj = {}
+        ro_flag = ext_temp.get(item.annotation_id, None)
+        go_flag = xcontainer.get(item.go.goid, None)
+        if ro_flag is None and go_flag is None and item.go.go_namespace == "cellular component":
+            obj = {
+                "geneId":
+                    "SGD:" + str(item.dbentity.sgdid),
+                "evidence": {},
+                "whenExpressedStage":
+                    "N/A",
+                "assay":
+                    "MMO:0000642",
+                "dateAssigned":
+                    item.date_created.strftime("%Y-%m-%dT%H:%m:%S-00:00"),
+                "wildtypeExpressionTermIdentifiers": {
+                    "anatomicalStructureTermId": "N/A"
+                }
+            }
+            if item.reference.pmid:
+                obj["evidence"]["pubMedId"] = "PMID:" + str(item.reference.pmid)
+            else:
+                obj["evidence"][
+                    "modPublicationId"] = "SGD:" + str(item.reference.sgdid)
+            if obj not in data:
+                data.append(obj)
+
+    if data:
+        main_obj['data'] = data
+        main_obj['metaData'] = {
+            "dataProvider": [{
+                "crossReference": {
+                    "id": "SGD"
+                },
+                "type": "curated"
+            }],
+            "dateProduced":
+                datetime.utcnow().strftime("%Y-%m-%dT%H:%m:%S-00:00")
+        }
+
+        return main_obj
+    return None
+
+
+def get_expression_data():
+    with concurrent.futures.ProcessPoolExecutor(max_workers=128) as executor:
+        go_data = get_goannotation_data()
+        if go_data:
+            fileStr = './scripts/bgi_json/data_dump/SGD.1.0.0.4_expression_' + str(randint(0, 1000)) + '.json'
+            with open(fileStr, 'w+') as res_file:
+                res_file.write(json.dumps(go_data))
 
 
 # populate text file with sgdis to be used to retrieve panther data
@@ -59,8 +156,7 @@ def get_bgi_data(soFlag=False):
     print("computing " + str(len(combined_list)) + " genes")
     result = []
     if(len(combined_list) > 0):
-
-        with concurrent.futures.ProcessPoolExecutor(max_workers=8) as executor:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=128) as executor:
             for item_key in combined_list:
                 obj = {
                     "crossReferences":
@@ -153,7 +249,7 @@ def get_bgi_data(soFlag=False):
                                         obj["crossReferences"].append({"id": str(temp_cross_item[0]), "pages": ["generic_cross_reference"]})
                                         #obj["crossReferences"] = [str(temp_cross_item[0])]
                     if(item_panther is not None):
-                        obj["crossReferences"].append({"id": "PANTHER:" + item_panther, "pages": ["generic_cross_reference"]})
+                        obj["crossReferences"].append({"id": "PANTHER:" + item_panther})
                         #obj["crossReferences"].append("PANTHER:" + item_panther)
                         obj["primaryId"] = "SGD:" + item.sgdid
                         item = combined_list[item_key]["locus_obj"]
@@ -308,6 +404,8 @@ if __name__ == '__main__':
         time_taken = "time taken: " + ("--- %s seconds ---" %
                                        (time.time() - start_time))
         res_file.write(time_taken)
+
+    ### phenotype ###
     second_start_time = time.time()
     get_phenotype_data()
     second_time_taken = "time taken: " + ("--- %s seconds ---" %
@@ -317,3 +415,15 @@ if __name__ == '__main__':
         second_time_taken = "time taken: " + ("--- %s seconds ---" %
                                               (time.time() - second_start_time))
         res_file_2.write(second_time_taken)
+
+    ### expression ###
+    third_start_time = time.time()
+    get_expression_data()
+    third_time_taken = "time taken: " + ("--- %s seconds ---" %
+                                          (time.time() - third_start_time))
+    print "------------------ expression time taken: " + third_time_taken + " --------------------"
+    with open('./scripts/bgi_json/data_dump/log_time_expression.txt',
+              'w+') as res_file_2:
+        third_start_time = "time taken: " + ("--- %s seconds ---" %
+                                             (time.time() - third_start_time))
+        res_file_2.write(third_start_time)
