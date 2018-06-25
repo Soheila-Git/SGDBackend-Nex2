@@ -18,7 +18,7 @@ import logging
 import json
 
 
-from .models import DBSession, ESearch, Colleague, Dbentity, Edam, Referencedbentity, ReferenceFile, Referenceauthor, FileKeyword, Keyword, Referencedocument, Chebi, ChebiUrl, PhenotypeannotationCond, Phenotypeannotation, Reservedname, Straindbentity, Literatureannotation, Phenotype, Apo, Go, Referencetriage, Referencedeleted, Locusdbentity, Dataset, DatasetKeyword, Contig, Proteindomain, Ec, Dnasequenceannotation, Straindbentity
+from .models import DBSession, ESearch, Colleague, Dbentity, Edam, Referencedbentity, ReferenceFile, Referenceauthor, FileKeyword, Keyword, Referencedocument, Chebi, ChebiUrl, Pathwaydbentity, Pathwayannotation, PhenotypeannotationCond, Phenotypeannotation, Reservedname, Straindbentity, Literatureannotation, Phenotype, Apo, Go, Referencetriage, Referencedeleted, Locusdbentity, Dataset, DatasetKeyword, Contig, Proteindomain, Ec, Dnasequenceannotation, Straindbentity
 from .helpers import extract_id_request, link_references_to_file, link_keywords_to_file, FILE_EXTENSIONS, get_locus_by_id, get_go_by_id, primer3_parser
 from .search_helpers import build_autocomplete_search_body_request, format_autocomplete_results, build_search_query, build_es_search_body_request, build_es_aggregation_body_request, format_search_results, format_aggregation_results, build_sequence_objects_search_query
 from .models_helpers import ModelsHelper
@@ -421,6 +421,14 @@ def chemical_phenotype_details(request):
         return chebi.phenotype_to_dict()
     else:
         return HTTPNotFound()
+
+@view_config(route_name='pathway_graph', renderer='json', request_method='GET')
+def pathway_graph(request):
+    path_sgdid = request.matchdict['sgdid'].upper()
+    pathway = DBSession.query(Pathwaydbentity).filter(Pathwaydbentity.sgdid == path_sgdid).one_or_none()
+    if not pathway:
+        return HTTPNotFound
+    return pathway.ortholog_graph()
 
 @view_config(route_name='phenotype', renderer='json', request_method='GET')
 def phenotype(request):

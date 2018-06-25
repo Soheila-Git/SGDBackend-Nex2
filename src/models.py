@@ -3,6 +3,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
 from zope.sqlalchemy import ZopeTransactionExtension
 from elasticsearch import Elasticsearch
+from neo4j.v1 import GraphDatabase
 import os
 from math import floor, log
 import json
@@ -21,6 +22,7 @@ from src.curation_helpers import ban_from_cache, get_author_etc, link_gene_names
 
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 ESearch = Elasticsearch(os.environ['ES_URI'], retry_on_timeout=True)
+GraphDriver = GraphDatabase.driver('bolt://localhost:7687', auth=('neo4j', 'neo4j'))
 
 QUERY_LIMIT = 25000
 SGD_SOURCE_ID = 834
@@ -1669,6 +1671,51 @@ class Pathwaydbentity(Dbentity):
 
     dbentity_id = Column(ForeignKey(u'nex.dbentity.dbentity_id', ondelete=u'CASCADE'), primary_key=True, server_default=text("nextval('nex.object_seq'::regclass)"))
     biocyc_id = Column(String(40))
+
+
+    def ortholog_graph(self):
+        nodes = [{ 'name': self.display_name, 'id': self.sgdid, 'category': 'Pathway' }]
+        edges = []
+        # genes annotated to pathway
+        annotation_loci = DBSession.query(Pathwayannotation.annotation_id, Dbentity.sgdid, Dbentity.display_name, Dbentity.dbentity_id).outerjoin(Dbentity).filter(Pathwayannotation.pathway_id == self.dbentity_id).all()
+        # orthologs
+        sgdids = []
+        locus_dbentity_ids = []
+        dbentity_id_to_sgdid = {}
+        for x in annotation_loci:
+            sgdids.append(str(x[1]))
+            nodes.append({ 'name': x[2], 'id': x[1], 'category': 'Yeast Gene' })
+            edges.append({ 'source': x[1], 'target': self.sgdid })
+            locus_dbentity_ids.append(x[3])
+            dbentity_id_to_sgdid[x[3]] = x[1]
+        with GraphDriver.session() as session:
+            results = session.run("MATCH (g:Gene)-[or:ORTHOLOGOUS]->(o:Gene)-[sr:FROM_SPECIES]->(s:Species) WHERE g.modLocalId IN $ids AND s.name = 'Homo sapiens' RETURN g.modLocalId, o.name, o.modGlobalId", ids=sgdids).values()
+            human_gene_ids = {}
+            for x in results:
+                if x[2] not in human_gene_ids.keys():
+                    nodes.append({ 'name': x[1], 'id': x[2], 'category': 'Human Gene' })
+                    human_gene_ids[x[2]] = True
+                edges.append({ 'source': x[0], 'target': x[2], 'label': 'ortholog' })
+        # interactions
+        physical_interactions = DBSession.query(Physinteractionannotation.dbentity1_id, Physinteractionannotation.dbentity2_id).filter(and_(Physinteractionannotation.dbentity1_id.in_(locus_dbentity_ids), Physinteractionannotation.dbentity2_id.in_(locus_dbentity_ids))).all()
+        for x in physical_interactions:
+            source_sgdid = dbentity_id_to_sgdid[x[0]]
+            target_sgdid = dbentity_id_to_sgdid[x[1]]
+            if source_sgdid == target_sgdid:
+                continue
+            edges.append({ 'source': source_sgdid, 'target': target_sgdid, 'label': 'physical interaction' })
+        genetic_interactions = DBSession.query(Geninteractionannotation.dbentity1_id, Geninteractionannotation.dbentity2_id).filter(and_(Geninteractionannotation.dbentity1_id.in_(locus_dbentity_ids), Geninteractionannotation.dbentity2_id.in_(locus_dbentity_ids))).all()
+        for x in genetic_interactions:
+            source_sgdid = dbentity_id_to_sgdid[x[0]]
+            target_sgdid = dbentity_id_to_sgdid[x[1]]
+            if source_sgdid == target_sgdid:
+                continue
+            edges.append({ 'source': source_sgdid, 'target': target_sgdid, 'label': 'genetic interaction' })
+        return {
+            'name': self.display_name,
+            'nodes': nodes,
+            'edges': edges
+        }
 
 
 class Referencedbentity(Dbentity):
@@ -6506,7 +6553,6 @@ class PathwayUrl(Base):
 
     pathway = relationship(u'Pathwaydbentity')
     source = relationship(u'Source')
-
 
 class Pathwayannotation(Base):
     __tablename__ = 'pathwayannotation'

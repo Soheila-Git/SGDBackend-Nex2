@@ -42,6 +42,7 @@ def main(global_config, **settings):
     config.add_route('chemical', '/chemical/{format_name}', request_method='GET')
     config.add_route('chemical_phenotype_details', '/chemical/{id}/phenotype_details', request_method='GET')
 
+    config.add_route('pathway_graph', '/pathway/{sgdid}/graph', request_method='GET')
     config.add_route('phenotype', '/phenotype/{format_name}', request_method='GET')
     config.add_route('phenotype_locus_details', '/phenotype/{id}/locus_details', request_method='GET')
 
