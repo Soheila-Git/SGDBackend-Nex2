@@ -308,7 +308,7 @@ CREATE TABLE nex.geninteractionannotation (
 	annotation_type varchar(20) NOT NULL,
 	bait_hit varchar(10) NOT NULL,
     mutant_id bigint,
-	description varchar(1000),
+	description varchar(4000),
 	date_created timestamp NOT NULL DEFAULT LOCALTIMESTAMP,
 	created_by varchar(12) NOT NULL,
 	CONSTRAINT geninteractionannotation_pk PRIMARY KEY (annotation_id)
@@ -664,6 +664,7 @@ CREATE INDEX posttranslationanno_tax_fk_index ON nex.posttranslationannotation (
 CREATE INDEX posttranslationanno_modifier_fk_index ON nex.posttranslationannotation (modifier_id);
 CREATE INDEX posttranslationanno_source_fk_index ON nex.posttranslationannotation (source_id);
 CREATE INDEX posttranslationanno_psimod_fk_index ON nex.posttranslationannotation (psimod_id);
+
 
 DROP TABLE IF EXISTS nex.proteindomainannotation CASCADE;
 CREATE TABLE nex.proteindomainannotation (
