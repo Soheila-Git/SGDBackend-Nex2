@@ -1688,14 +1688,29 @@ class Pathwaydbentity(Dbentity):
             edges.append({ 'source': x[1], 'target': self.sgdid })
             locus_dbentity_ids.append(x[3])
             dbentity_id_to_sgdid[x[3]] = x[1]
+        # run against neo4j
         with GraphDriver.session() as session:
-            results = session.run("MATCH (g:Gene)-[or:ORTHOLOGOUS]->(o:Gene)-[sr:FROM_SPECIES]->(s:Species) WHERE g.modLocalId IN $ids AND s.name = 'Homo sapiens' RETURN g.modLocalId, o.name, o.modGlobalId", ids=sgdids).values()
+            # human orthologs
+            g_results = session.run("MATCH (g:Gene)-[or:ORTHOLOGOUS]->(o:Gene)-[sr:FROM_SPECIES]->(s:Species) WHERE g.modLocalId IN $ids AND s.name = 'Homo sapiens' RETURN g.modLocalId, o.symbol, o.modGlobalId", ids=sgdids).values()
             human_gene_ids = {}
-            for x in results:
+            for x in g_results:
                 if x[2] not in human_gene_ids.keys():
                     nodes.append({ 'name': x[1], 'id': x[2], 'category': 'Human Gene' })
                     human_gene_ids[x[2]] = True
                 edges.append({ 'source': x[0], 'target': x[2], 'label': 'ortholog' })
+            # diseases connected to these human genes
+            human_gene_ids = human_gene_ids.keys()
+            d_results = session.run("MATCH (d:DOTerm)-[r]-(g:Gene)--(s:Species) WHERE s.name = 'Homo sapiens' AND g.modGlobalId IN $ids RETURN g.modGlobalId, type(r), d.name, d.doId", ids=human_gene_ids).values()
+            d_ids = {}
+            for x in d_results:
+                g_id = x[0]
+                r_label = x[1]
+                d_name = x[2]
+                d_id = x[3]
+                if d_id not in d_ids.keys():
+                    nodes.append({ 'name': d_name, 'id': d_id, 'category': 'Disease' })
+                    d_ids[d_id] = True
+                edges.append({ 'source': g_id, 'target': d_id, 'label': r_label })
         # interactions
         physical_interactions = DBSession.query(Physinteractionannotation.dbentity1_id, Physinteractionannotation.dbentity2_id).filter(and_(Physinteractionannotation.dbentity1_id.in_(locus_dbentity_ids), Physinteractionannotation.dbentity2_id.in_(locus_dbentity_ids))).all()
         for x in physical_interactions:
