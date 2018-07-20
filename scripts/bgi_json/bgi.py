@@ -268,10 +268,10 @@ def get_bgi_data(soFlag=False):
             if(len(result) > 0):
                 output_obj = {
                     "data": result,
-                    "metaData":{
+                    "metaData": {
                         "dataProvider": [
                             {
-                                "crossReference":{
+                                "crossReference": {
                                     "id": "SGD"
                                 }
                             }
@@ -339,18 +339,19 @@ def get_phenotype_data():
     _data = DBSession.query(Phenotypeannotation).all()
     result = []
     print("computing " + str(len(_data)) + " phenotypes")
-    with concurrent.futures.ProcessPoolExecutor(max_workers=128) as executor:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
         for item in _data:
             obj = {
                 "objectId": "",
                 "phenotypeTermIdentifiers": [],
                 "phenotypeStatement": "",
-                "dateAssigned": ""
+                "dateAssigned": "",
+                "evidence": {}
             }
-            '''if item.reference.pmid:
-                obj["pubMedId"] = "PMID:" + str(item.reference.pmid)
+            if item.reference.pmid:
+                obj["evidence"]["pubMedId"] = "PMID:" + str(item.reference.pmid)
             else:
-                obj["pubModId"] = "SGD:" + str(item.reference.sgdid)'''
+                obj["evidence"]["pubModId"] = "SGD:" + str(item.reference.sgdid)
             if item.phenotype.qualifier:
                 pString = item.phenotype.qualifier.display_name
                 obj["phenotypeTermIdentifiers"].append({
@@ -379,19 +380,20 @@ def get_phenotype_data():
 
         if len(result) > 0:
             output_obj = {
-                    "data": result,
-                    "metaData":{
-                        "dataProvider": [
-                            {
-                                "crossReference":{
-                                    "id": "SGD"
-                                }
-                            }
-                        ],
-                        "dateProduced": datetime.utcnow().strftime("%Y-%m-%dT%H:%m:%S-00:00")
-                    }
+                "data": result,
+                "metaData": {
+                    "dataProvider": [{
+                        "crossReference": {
+                            "id": "SGD",
+                            "pages": ["homepage"]
+                        },
+                        "type": "curated"
+                    }],
+                    "dateProduced":
+                        datetime.utcnow().strftime("%Y-%m-%dT%H:%m:%S-00:00")
                 }
-            fileStr = './scripts/bgi_json/data_dump/SGD.1.0.0.4_phenotype.json'
+            }
+            fileStr = './scripts/bgi_json/data_dump/SGD.1.0.0.4_2_phenotype.json'
             with open(fileStr, 'w+') as res_file:
                 res_file.write(json.dumps(output_obj))
 
@@ -399,7 +401,7 @@ def get_phenotype_data():
 
 # entry point
 if __name__ == '__main__':
-    print "--------------start computing data--------------"
+    '''print "--------------start computing data--------------"
     start_time = time.time()
     get_bgi_data()
     time_taken = "time taken: " + ("--- %s seconds ---" % (time.time() - start_time))
@@ -410,9 +412,9 @@ if __name__ == '__main__':
         res_file.write(time_taken)
 
     ### phenotype ###
-    second_start_time = time.time()
+    second_start_time = time.time()'''
     get_phenotype_data()
-    second_time_taken = "time taken: " + ("--- %s seconds ---" %
+    '''second_time_taken = "time taken: " + ("--- %s seconds ---" %
                                    (time.time() - second_start_time))
     print "------------------ phenotype time taken: " + second_time_taken + " --------------------"
     with open('./scripts/bgi_json/data_dump/log_time_pheno.txt', 'w+') as res_file_2:
@@ -430,4 +432,4 @@ if __name__ == '__main__':
               'w+') as res_file_2:
         third_start_time = "time taken: " + ("--- %s seconds ---" %
                                              (time.time() - third_start_time))
-        res_file_2.write(third_start_time)
+        res_file_2.write(third_start_time)'''
