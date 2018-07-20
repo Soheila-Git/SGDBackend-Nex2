@@ -46,6 +46,10 @@ def load_complex():
 
     nex_session = get_session()
 
+
+    print "Retriving core data from database..."
+    print datetime.now()
+
     source_to_id = dict([(x.display_name, x.source_id) for x in nex_session.query(Source).all()])
     format_name_to_psimi_id = dict([(x.format_name, x.psimi_id) for x in nex_session.query(Psimi).all()])
     goid_to_go_id = dict([(x.goid, x.go_id) for x in nex_session.query(Go).all()])
@@ -61,6 +65,11 @@ def load_complex():
     
     format_name_to_interactor = dict([(x.format_name, x) for x in nex_session.query(Interactor).all()])
 
+    
+    print "Retriving Reference data from ComplexReference table..."
+    print datetime.now()
+
+
     complex_id_to_reference_id_list = {}
     for x in nex_session.query(ComplexReference).all():
         reference_id_list = []
@@ -68,6 +77,11 @@ def load_complex():
             reference_id_list = complex_id_to_reference_id_list[x.complex_id]
         reference_id_list.append(x.reference_id)
         complex_id_to_reference_id_list[x.complex_id] = reference_id_list
+
+
+    print "Retriving Go data from ComplexGo table..."
+    print datetime.now()
+
 
     complex_id_to_go_id_list = {}
     for x in nex_session.query(ComplexGo).all():
@@ -77,6 +91,10 @@ def load_complex():
         go_id_list.append(x.go_id)
         complex_id_to_go_id_list[x.complex_id] = go_id_list
 
+
+    print "Retriving Alias data from ComplexAlias table..."
+    print datetime.now()
+
     complex_id_to_alias_list = {}
     for x in nex_session.query(ComplexAlias).all():
         alias_list = []
@@ -85,10 +103,19 @@ def load_complex():
         alias_list.append((x.alias_type, x.display_name))
         complex_id_to_alias_list[x.complex_id] = alias_list
  
+
+    print "Getting all json data from complex portal..."
+    print datetime.now()
+
+
     fw = open(log_file, "w")
     
     all_json = get_json(all_json_url)
     elements = all_json['elements']
+
+    
+    print "Getting data from complex portal for each complex..."
+    print datetime.now()
 
 
     interactor_added = {}
@@ -98,7 +125,12 @@ def load_complex():
         desc = x['description'].replace("\n", " ")
         complexAC = x['complexAC']
         complexName = x['complexName']
-        
+
+
+        print "Getting data for", complexAC
+        print datetime.now()
+
+
         detailUrl = detail_json_url_template.replace("REPLACE_ID_HERE", complexAC)
         
         y = get_json(detailUrl)
@@ -223,6 +255,11 @@ def load_complex():
             format_name = p['identifier']
             display_name = p.get('name')
             obj_url = p.get('identifierLink')
+            if obj_url is None:
+                if format_name.startswith("EBI-"):
+                    obj_url = "https://www.ebi.ac.uk/complexportal/complex/search?query=" + format_name
+                if format_name.startswith("NP_"):
+                    obj_url = "https://www.ncbi.nlm.nih.gov/protein/" + format_name
             desc = p.get('description')
             locus_id = gene_name_to_locus_id.get(display_name)
             type_id = format_name_to_psimi_id.get(p.get('interactorTypeMI'))
@@ -353,6 +390,7 @@ def update_complex_alias(nex_session, fw, complex_id, aliases, source_id, aliase
     for alias in aliases_in_db:
         if alias in aliases:
             continue
+        (alias_type, display_name) = alias
         x = nex_session.query(ComplexAlias).filter_by(complex_id=complex_id, alias_type=alias_type, display_name=display_name).one_or_none()
         nex_session.delete(x)
 
@@ -470,7 +508,7 @@ def update_dbentity(nex_session, fw, complexAC, display_name, source_id, display
     if display_name_in_db == display_name:
         return
     
-    nex_session.query(Dbentity).filter_by(format_name=intact_id).update({"display_name": display_name})    
+    nex_session.query(Dbentity).filter_by(format_name=complexAC).update({"display_name": display_name})    
 
     fw.write("Update dbentity.display_name to " + display_name + " for format_name = " + complexAC + "\n")
     
@@ -497,7 +535,7 @@ def update_complexdbentity(nex_session, fw, intact_id, complexAC, systematicName
 
     nex_session.query(Complexdbentity).filter_by(format_name=intact_id).update(update_hash)
 
-    fw.write("Update dbentity.display_name to " + display_name + " for format_name = " + intact_id + "\n")
+    fw.write("Update complexdbentity row for format_name = " + intact_id + "\n")
 
 
 def get_json(url):
